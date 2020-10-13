@@ -1,0 +1,11 @@
+{
+    "name": "no name yet",
+    "port": 4200,
+    "dbSettings": {
+        "host": "localhost",
+        "user": "postgres",
+        "password": "klosek79",
+        "database": "gamedb",
+        "port": 5430
+    }
+}

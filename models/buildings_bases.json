@@ -1,0 +1,44 @@
+{
+    "modifiers":{
+      "t_modifier": 0.061,
+      "res_modifier": 0.165
+    },
+    "buildings":[
+    {
+        "cost": {
+            "res_A": 56,
+            "res_B": 41,
+            "res_C": 0
+        },
+        "base_time": 51000,
+        "base_prod": 20
+    },
+    {
+        "cost": {
+            "res_A": 74,
+            "res_B": 74,
+            "res_C": 0
+        },
+        "base_time": 58000,
+        "base_prod": 16
+    },
+    {
+        "cost": {
+            "res_A": 85,
+            "res_B": 92,
+            "res_C": 0
+        },
+        "base_time": 72000,
+        "base_prod": 12
+    },
+    {
+        "cost": {
+            "res_A": 121,
+            "res_B": 79,
+            "res_C": 0
+        },
+        "base_time": 90000,
+        "base_prod": 20
+    }
+]
+}
