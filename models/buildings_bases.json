@@ -10,8 +10,9 @@
             "res_B": 41,
             "res_C": 0
         },
-        "base_time": 51000,
-        "base_prod": 20
+        "base_time": 10000,
+        "base_prod": 20,
+        "name":"Metal Mine"
     },
     {
         "cost": {
@@ -19,8 +20,9 @@
             "res_B": 74,
             "res_C": 0
         },
-        "base_time": 58000,
-        "base_prod": 16
+        "base_time": 10000,
+        "base_prod": 16,
+        "name":"Crystal Mine"
     },
     {
         "cost": {

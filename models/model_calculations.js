@@ -25,7 +25,8 @@ module.exports = (type, tier, level) => {
 
     return {
         "resources_needed": bluntedPowMultiple(buildings[tier].cost, level, modifiers.res_modifier),
-        "time_needed": bluntedPowSingle(buildings[tier].base_time, level, modifiers.t_modifier)
+        "time_needed": bluntedPowSingle(buildings[tier].base_time, level, modifiers.t_modifier),
+        "name": buildings[tier-1].name
     }
 }
 //CONTAINED INSIDE BUILDINGS_BASE

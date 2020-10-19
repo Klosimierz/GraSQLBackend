@@ -8,6 +8,10 @@ const app = express();
 app.use(express.json());
 require('./routes/route_index')(app);
 
+app.get('/',(req,res)=>{
+    res.send(req.body);
+})
+
 app.use((err)=>{
     console.log('Something went wrong');
 });
