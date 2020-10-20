@@ -1,3 +1,53 @@
 {
-    
+    "modifiers": {
+        "t_modifier": 0.041,
+        "res_modifier": 0.132
+    },
+    "objects": [
+        {
+            "cost": {
+                "res_A": 400,
+                "res_B": 100,
+                "res_C": 0
+            },
+            "base_time": 250000,
+            "name":"Engineering",
+            "tech_requirements": {
+            },
+            "infrastructure_requirements": {     
+                "Research Facility": 1      
+            }
+        },
+        {
+            "cost": {
+                "res_A": 400,
+                "res_B": 700,
+                "res_C": 200
+            },
+            "base_time": 480000,
+            "name":"Computing",
+            "tech_requirements": {
+                "Engineering": 1
+            },
+            "infrastructure_requirements": {     
+                "Research Facility": 2      
+            }
+        },
+        {
+            "cost": {
+                "res_A": 1000,
+                "res_B": 500,
+                "res_C": 100
+            },
+            "base_time": 510000,
+            "name":"Energetics",
+            "tech_requirements": {
+                "Engineering": 2,
+                "Computing": 1
+            },
+            "infrastructure_requirements": {     
+                "ResearchFacility": 2      
+            }
+        }
+    ]
 }

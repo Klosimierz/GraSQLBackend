@@ -2,6 +2,7 @@ const building_bases = require('./buildings_bases.json');
 const research_bases = require('./research_bases.json');
 const unit_bases = require('./units_bases.json');
 
+
 module.exports = (type, tier, level) => {
 
     let sheet = null;
@@ -21,13 +22,16 @@ module.exports = (type, tier, level) => {
         }
     }
 
-    const { modifiers, buildings } = sheet;
+    const { modifiers, objects } = sheet;
 
     return {
-        "resources_needed": bluntedPowMultiple(buildings[tier].cost, level, modifiers.res_modifier),
-        "time_needed": bluntedPowSingle(buildings[tier].base_time, level, modifiers.t_modifier),
-        "name": buildings[tier-1].name
+        "resources_needed": bluntedPowMultiple(objects[tier-1].cost, level, modifiers.res_modifier),
+        "time_needed": bluntedPowSingle(objects[tier-1].base_time, level, modifiers.t_modifier),
+        "name": objects[tier-1].name,
+        "tech_requirements": objects[tier-1].tech_requirements,
+        "infrastructure_requirements": objects[tier-1].infrastructure_requirements
     }
+
 }
 //CONTAINED INSIDE BUILDINGS_BASE
 //BASE_COST: cost.res_A/res_B/res_C ; BASE_TIME: base_time; MODIFIERS: modifiers.res_modifier, modifiers.t_modifier
