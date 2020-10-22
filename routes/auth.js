@@ -17,7 +17,7 @@ router.post('/test', autocatch(async (req,res) => {
 
 router.post('/login', autocatch(async (req, res) => {
     const result = await query(query_id_by_username, [req.body.username]);
-    if (result.rows[0].id) {
+    if (result.rows[0]) {
         const pw = result.rows[0].pw;
         if (pw === req.body.password) {
             const token = jwt.sign({

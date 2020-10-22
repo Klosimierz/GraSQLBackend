@@ -1,6 +1,9 @@
 const express = require('express');
 const config = require('config');
 const calc = require('./models/model_calculations');
+const rccalc = require('./models/requirements_calculator');
+
+rccalc();
 
 const port = config.get('port');
 

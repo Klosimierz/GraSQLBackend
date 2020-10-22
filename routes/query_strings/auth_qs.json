@@ -8,5 +8,7 @@
     "pay_in_resources": "UPDATE account SET resource_a=resource_a - $1,resource_b=resource_b - $2,resource_c=resource_c-$3 WHERE id=$4",
     "lock_building": "UPDATE account SET building_scheduled = true WHERE id=$1",
     "unlock_building": "UPDATE account SET building_scheduled = false WHERE id=$1",
-    "alter_building_level": "UPDATE buildings SET level = $1 WHERE owner_id = $2 AND name = $3"
+    "alter_building_level": "UPDATE buildings SET level = $1 WHERE owner_id = $2 AND name = $3",
+    "get_research_all": "SELECT * FROM research WHERE owner_id = $1",
+    "get_buildings_all": "SELECT name,level FROM buildings WHERE owner_id =$1"
 }
