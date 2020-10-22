@@ -64,7 +64,8 @@
                 "Energetics":2
             },
             "infrastructure_requirements": {
-                "Power plant": 2
+                "Power Plant": 2,
+                "Fuel Mine": 1
             }
         }
     ]

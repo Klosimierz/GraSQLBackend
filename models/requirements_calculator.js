@@ -1,44 +1,41 @@
-const building_bases = require('./buildings_bases.json');
-const research_bases = require('./research_bases.json');
-const unit_bases = require('./units_bases.json');
-
 const _ = require('lodash');
-const c = require('config');
 
-module.exports = (/*available_tech, available_infrastructure, required_tech,required_infrastructure*/) => {
-    const avail = {
-        "tech_requirements": {
-            "Power Plant": 1,
-        },
-        "infrastructure_requirements": {
-            "Research Facility": 2,
-            "Power Plant": 3
-        }
-    }
-    const required = {
-        "tech_requirements": {
-            "Power Plant": 1
-        },
-        "infrastructure_requirements": {
-            "Power Plant": 1,
-            "Research Facility": 2,
-        }
+module.exports = (infra_available,res_available,infra_required,res_required) => {
+
+    if(_.isEmpty(infra_required) && _.isEmpty(res_required)) 
+    {      
+        return true;
     }
 
-    const required_tech = required.tech_requirements;
-    const required_infra = required.infrastructure_requirements;
-    const available_tech = avail.tech_requirements;
-    const available_infra = avail.infrastructure_requirements;
+    let avail_infrastructure = {};
+    let avail_research = {};
 
-    for(let [rki,rvi] of Object.entries(required_infra)) {
-        for(let [aki,avi] of Object.entries(available_infra)) {
-            if(rki===aki && rvi>avi) return false;
+    infra_available.forEach((fullObject)=>{       
+        avail_infrastructure[fullObject.name] = fullObject.level;
+    });
+    res_available.forEach((fullObject)=>{
+        avail_research[fullObject.name] = fullObject.level;
+    });
+
+    for(let [rki,rvi] of Object.entries(infra_required)) {
+        if(!_.has(avail_infrastructure,rki))
+            return false;
+            else {
+                for(let [aki,avi] of Object.entries(avail_infrastructure)) {
+                    if(rki===aki && rvi>avi)
+                        return false;
+                }
+            }
         }
-    }
-    for(let [rkr,rvr] of Object.entries(required_tech)) {
-        for(let [akr,avr] of Object.entries(available_tech)) {
-            if(rkr===akr && rvr>avr) return false;
-        }
+    for(let [rkr,rvr] of Object.entries(res_required)) {
+        if(!_.has(avail_research,rkr))
+            return false;
+            else {
+                for(let [akr,avr] of Object.entries(avail_infrastructure)) {
+                    if(rkr===akr && rvr>avr)
+                        return false;
+                }
+            }
     }
     return true;
 }

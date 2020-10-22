@@ -9,6 +9,6 @@
     "lock_building": "UPDATE account SET building_scheduled = true WHERE id=$1",
     "unlock_building": "UPDATE account SET building_scheduled = false WHERE id=$1",
     "alter_building_level": "UPDATE buildings SET level = $1 WHERE owner_id = $2 AND name = $3",
-    "get_research_all": "SELECT * FROM research WHERE owner_id = $1",
+    "get_research_all": "SELECT name,level FROM research WHERE owner_id = $1",
     "get_buildings_all": "SELECT name,level FROM buildings WHERE owner_id =$1"
 }
