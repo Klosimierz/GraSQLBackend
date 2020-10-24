@@ -1,11 +1,11 @@
 const express = require('express');
+const config = require('config');
 const autocatch = require('../misc/asyncautocatch');
 const router = express.Router();
-const pg = require('pg');
 const jwt = require('jsonwebtoken');
-const joi = require('joi');
 const { query, getClient } = require('../dbcontrol/index');
 const { query_id_by_username, create_new_user, create_user_account } = require('./query_strings/auth_qs.json');
+const ServerTime = require('../misc/server_time');
 
 
 
@@ -22,16 +22,16 @@ router.post('/login', autocatch(async (req, res) => {
         if (pw === req.body.password) {
             const token = jwt.sign({
                 "username": req.body.username,
-                "id": result.rows[0].id
-            },'abc');
-            res.status(200).send(token);
+                "id": result.rows[0].id,
+            },config.get("temp_secrets.jwt_one"));
+            res.header('x-auth-token',token).status(200).send({message:'Login succesful'});
         }
         else {
-            res.status(401).send('Wrong username or password');
+            res.status(401).send({message:'Wrong username or passowword'});
         }
     }
     else {
-        res.status(401).send('Wrong username or password');
+        res.status(401).send({message:'Wrong username or passowword'});
     }
 }));
 //NO AUTOCATCH FOR TRANSACTIONS
